@@ -1,7 +1,6 @@
-
 import { Mail, MapPin, Phone } from "lucide-react";
 import { Container } from "./ui/Container";
-import { Badge } from "./ui/Badge";
+import { Badge } from "./ui/badge";
 
 export function ContactSection() {
   return (

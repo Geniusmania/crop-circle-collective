@@ -1,6 +1,5 @@
-
 import { Container } from "./ui/Container";
-import { Badge } from "./ui/Badge";
+import { Badge } from "./ui/badge";
 
 export function HeroSection() {
   return (

@@ -1,6 +1,5 @@
-
 import { cn } from "@/lib/utils";
-import { Badge } from "./ui/Badge";
+import { Badge } from "./ui/badge";
 
 interface CropCardProps {
   image: string;

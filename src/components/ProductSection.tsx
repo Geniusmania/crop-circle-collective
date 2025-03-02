@@ -1,7 +1,6 @@
-
 import { Container } from "./ui/Container";
 import { CropCard } from "./CropCard";
-import { Badge } from "./ui/Badge";
+import { Badge } from "./ui/badge";
 
 const products = [
   {
@@ -60,15 +59,6 @@ export function ProductSection() {
             />
           ))}
         </div>
-{/*         
-        <div className="mt-16 text-center">
-          <a 
-            href="#" 
-            className="inline-flex items-center text-primary font-medium underline-animation"
-          >
-            View All Products
-          </a>
-        </div> */}
       </Container>
     </section>
   );
