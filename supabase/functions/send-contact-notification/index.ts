@@ -1,6 +1,8 @@
 
 import { serve } from "https://deno.land/std@0.190.0/http/server.ts";
-import { createClient } from "https://esm.sh/@supabase/supabase-js@2.40.0";
+import { Resend } from "npm:resend@2.0.0";
+
+const resend = new Resend("re_XWEgwj89_HzeCwdAwLXk4HvKqcGUrXWHF");
 
 const corsHeaders = {
   "Access-Control-Allow-Origin": "*",
@@ -20,10 +22,6 @@ serve(async (req) => {
   }
 
   try {
-    const supabaseUrl = Deno.env.get("SUPABASE_URL") as string;
-    const supabaseKey = Deno.env.get("SUPABASE_ANON_KEY") as string;
-    const supabase = createClient(supabaseUrl, supabaseKey);
-
     const formData: ContactFormData = await req.json();
     const { name, email, message } = formData;
 
@@ -31,45 +29,26 @@ serve(async (req) => {
       throw new Error("Missing required fields");
     }
 
-    // Store the message in the database
-    const { data: contactData, error: contactError } = await supabase
-      .from("contact_messages")
-      .insert([{ name, email, message }])
-      .select();
-
-    if (contactError) {
-      console.error("Error storing contact message:", contactError);
-      throw new Error("Failed to store contact message");
-    }
-
-    // Send an email notification
-    // Using Supabase's built-in email service for simplicity
-    const { data: emailData, error: emailError } = await supabase.auth.admin.createUser({
-      email: "pbaidoo.pb10@gmail.com",
-      email_confirm: true,
-      user_metadata: { 
-        type: "notification", 
-        subject: `New Contact Form Submission from ${name}`,
-        message: `
-          Name: ${name}
-          Email: ${email}
-          Message: ${message}
-        `,
-        actionLink: `${supabaseUrl}/auth/v1/verify`,
-      },
+    // Send notification email to admin
+    const emailResponse = await resend.emails.send({
+      from: "Quicklinks Agribusiness <onboarding@resend.dev>",
+      to: ["pbaidoo.pb10@gmail.com"],
+      subject: `New Contact Form Submission from ${name}`,
+      html: `
+        <h1>New Contact Form Submission</h1>
+        <p><strong>Name:</strong> ${name}</p>
+        <p><strong>Email:</strong> ${email}</p>
+        <p><strong>Message:</strong></p>
+        <p>${message}</p>
+      `,
     });
 
-    // Note: In a production environment, you'd want to use a proper email service like Resend, SendGrid, etc.
-
-    if (emailError) {
-      console.error("Error sending email notification:", emailError);
-      // We'll still consider the submission successful even if the email fails
-    }
+    console.log("Email notification sent successfully:", emailResponse);
 
     return new Response(
       JSON.stringify({ 
         success: true, 
-        message: "Contact message received successfully" 
+        message: "Contact form processed successfully" 
       }),
       { 
         headers: { ...corsHeaders, "Content-Type": "application/json" },

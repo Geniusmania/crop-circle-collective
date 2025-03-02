@@ -222,6 +222,7 @@ export function ContactSection() {
           </div>
         </div>
       </Container>
+      <Toaster />
     </section>
   );
 }
