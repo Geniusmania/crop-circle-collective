@@ -1,8 +1,89 @@
+
+import { useState } from "react";
 import { Mail, MapPin, Phone } from "lucide-react";
 import { Container } from "./ui/Container";
 import { Badge } from "./ui/badge";
+import { supabase } from "@/integrations/supabase/client";
+import { useToast } from "@/hooks/use-toast";
+import { Toaster } from "./ui/toaster";
 
 export function ContactSection() {
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    message: ""
+  });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const { toast } = useToast();
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { id, value } = e.target;
+    setFormData(prev => ({ ...prev, [id]: value }));
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+
+    try {
+      // Validate form data
+      if (!formData.name || !formData.email || !formData.message) {
+        toast({
+          title: "Validation Error",
+          description: "Please fill out all fields",
+          variant: "destructive"
+        });
+        setIsSubmitting(false);
+        return;
+      }
+
+      // Save message to the database
+      const { error: dbError } = await supabase
+        .from('contact_messages')
+        .insert([
+          { name: formData.name, email: formData.email, message: formData.message }
+        ]);
+
+      if (dbError) {
+        console.error("Database error:", dbError);
+        throw new Error("Failed to save your message");
+      }
+
+      // Call the edge function to send email notification
+      const { error: functionError } = await supabase.functions.invoke("send-contact-notification", {
+        body: formData
+      });
+
+      if (functionError) {
+        console.error("Function error:", functionError);
+        // We'll still consider the submission successful even if notification fails
+      }
+
+      // Show success message
+      toast({
+        title: "Message Sent!",
+        description: "Thank you for your message. We'll get back to you soon.",
+        className: "bg-green-500 text-white"
+      });
+
+      // Reset the form
+      setFormData({
+        name: "",
+        email: "",
+        message: ""
+      });
+    } catch (error) {
+      console.error("Submission error:", error);
+      toast({
+        title: "Submission Error",
+        description: error.message || "Something went wrong. Please try again.",
+        variant: "destructive"
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
   return (
     <section id="contact" className="section-padding relative overflow-hidden">
       {/* Background decoration */}
@@ -21,7 +102,7 @@ export function ContactSection() {
           <div className="grid md:grid-cols-2">
             <div className="p-6 md:p-10 bg-natural-50">
               <h3 className="text-xl md:text-2xl mb-6">Send Us a Message</h3>
-              <form className="space-y-4">
+              <form className="space-y-4" onSubmit={handleSubmit}>
                 <div>
                   <label htmlFor="name" className="block text-sm font-medium mb-1">
                     Name
@@ -31,6 +112,8 @@ export function ContactSection() {
                     id="name"
                     className="w-full px-4 py-2 rounded-lg border border-border bg-background/50 focus:outline-none focus:ring-2 focus:ring-primary"
                     placeholder="Your name"
+                    value={formData.name}
+                    onChange={handleInputChange}
                   />
                 </div>
                 
@@ -43,6 +126,8 @@ export function ContactSection() {
                     id="email"
                     className="w-full px-4 py-2 rounded-lg border border-border bg-background/50 focus:outline-none focus:ring-2 focus:ring-primary"
                     placeholder="your@email.com"
+                    value={formData.email}
+                    onChange={handleInputChange}
                   />
                 </div>
                 
@@ -55,14 +140,17 @@ export function ContactSection() {
                     rows={4}
                     className="w-full px-4 py-2 rounded-lg border border-border bg-background/50 focus:outline-none focus:ring-2 focus:ring-primary"
                     placeholder="Your message"
+                    value={formData.message}
+                    onChange={handleInputChange}
                   ></textarea>
                 </div>
                 
                 <button
                   type="submit"
-                  className="w-full bg-primary hover:bg-primary/90 text-primary-foreground px-6 py-3 rounded-lg font-medium transition-colors"
+                  className="w-full bg-primary hover:bg-primary/90 text-primary-foreground px-6 py-3 rounded-lg font-medium transition-colors disabled:opacity-70"
+                  disabled={isSubmitting}
                 >
-                  Send Message
+                  {isSubmitting ? "Sending..." : "Send Message"}
                 </button>
               </form>
             </div>
@@ -91,7 +179,7 @@ export function ContactSection() {
                   <div>
                     <h4 className="font-medium">Email Us</h4>
                     <p className="text-white/70 mt-1">
-                      <a href="mailto:info@harvestfarms.com" className="hover:text-white transition-colors">
+                      <a href="mailto:info@quicklinksagribusiness.com" className="hover:text-white transition-colors">
                         info@quicklinksagribusiness.com
                       </a>
                     </p>
@@ -105,7 +193,7 @@ export function ContactSection() {
                   <div>
                     <h4 className="font-medium">Call Us</h4>
                     <p className="text-white/70 mt-1">
-                      <a href="tel:+15551234567" className="hover:text-white transition-colors">
+                      <a href="tel:+233596605771" className="hover:text-white transition-colors">
                         +233 596-605771
                       </a>
                     </p>
