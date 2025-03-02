@@ -36,9 +36,9 @@ export function Header() {
           <div className="flex items-center">
             <a href="#" className="flex items-center gap-2">
               <span className="h-8 w-8 rounded-full bg-primary flex items-center justify-center">
-                <span className="text-primary-foreground font-serif font-bold text-lg">H</span>
+                <span className="text-primary-foreground font-serif font-bold text-lg">Q</span>
               </span>
-              <span className="font-serif text-xl font-medium">Harvest</span>
+              <span className="font-serif text-xl font-medium">Quicklinks Agribusiness</span>
             </a>
           </div>
           
@@ -74,9 +74,9 @@ export function Header() {
             <div className="flex items-center justify-between py-4">
               <a href="#" className="flex items-center gap-2">
                 <span className="h-8 w-8 rounded-full bg-primary flex items-center justify-center">
-                  <span className="text-primary-foreground font-serif font-bold text-lg">H</span>
+                  <span className="text-primary-foreground font-serif font-bold text-lg">Q</span>
                 </span>
-                <span className="font-serif text-xl font-medium">Harvest</span>
+                <span className="font-serif text-xl font-medium">Quicklinks Agribusiness</span>
               </a>
               <button
                 type="button"

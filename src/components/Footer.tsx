@@ -11,9 +11,9 @@ export function Footer() {
           <div>
             <div className="flex items-center gap-2 mb-6">
               <span className="h-8 w-8 rounded-full bg-primary flex items-center justify-center">
-                <span className="text-primary-foreground font-serif font-bold text-lg">H</span>
+                <span className="text-primary-foreground font-serif font-bold text-lg">Q</span>
               </span>
-              <span className="font-serif text-xl font-medium">Harvest</span>
+              <span className="font-serif text-xl font-medium">Quicklinks Agribusiness</span>
             </div>
             <p className="text-white/70 text-sm">
               Sustainable farming with a commitment to quality. From nature's soil to your table.
@@ -81,7 +81,7 @@ export function Footer() {
         
         <div className="flex flex-col md:flex-row justify-between items-center">
           <p className="text-white/50 text-sm">
-            © {currentYear} Harvest Farms. All rights reserved.
+            © {currentYear} QuickLinks Agribusiness. All rights reserved.
           </p>
           <div className="flex gap-6 mt-4 md:mt-0">
             <a href="#" className="text-white/50 hover:text-white transition-colors">

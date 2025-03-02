@@ -63,7 +63,7 @@ export function AboutSection() {
                 </div>
                 <div className="aspect-square rounded-2xl overflow-hidden">
                   <img 
-                    src="https://images.unsplash.com/photo-1585619566441-284d589684bd?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80" 
+                    src="https://media.istockphoto.com/id/523650017/photo/process-of-rice-harvesting.jpg?s=612x612&w=0&k=20&c=MX-mAMMYG2PQYkmJJAveGNOSSsFuWm0TtVNKGfyFC5Q=" 
                     alt="Harvesting process" 
                     className="w-full h-full object-cover"
                   />

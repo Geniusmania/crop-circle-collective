@@ -78,9 +78,9 @@ export function ContactSection() {
                   <div>
                     <h4 className="font-medium">Visit Us</h4>
                     <address className="not-italic text-white/70 mt-1">
-                      123 Harvest Road<br />
-                      Farmington, CA 95230<br />
-                      United States
+                      Enchi<br />
+                      Western North<br />
+                      Ghana
                     </address>
                   </div>
                 </div>
@@ -93,7 +93,7 @@ export function ContactSection() {
                     <h4 className="font-medium">Email Us</h4>
                     <p className="text-white/70 mt-1">
                       <a href="mailto:info@harvestfarms.com" className="hover:text-white transition-colors">
-                        info@harvestfarms.com
+                        info@quicklinksagribusiness.com
                       </a>
                     </p>
                   </div>
@@ -107,7 +107,7 @@ export function ContactSection() {
                     <h4 className="font-medium">Call Us</h4>
                     <p className="text-white/70 mt-1">
                       <a href="tel:+15551234567" className="hover:text-white transition-colors">
-                        +1 (555) 123-4567
+                        +233 596-605771
                       </a>
                     </p>
                   </div>

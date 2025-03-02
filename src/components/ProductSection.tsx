@@ -8,7 +8,7 @@ const products = [
     id: 1,
     title: "Organic Vegetables",
     description: "Fresh, seasonal vegetables grown without synthetic pesticides or fertilizers.",
-    image: "https://images.unsplash.com/photo-1557844352-761f2149b6c7?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80",
+    image: "https://www.thegardener.co.za/wp-content/uploads/2018/05/Fotolia_93014626_Subscription_Monthly_M.jpg",
     category: "Vegetables",
   },
   {
@@ -22,14 +22,14 @@ const products = [
     id: 3,
     title: "Ancient Grains",
     description: "Nutrient-rich grains that have remained largely unchanged over centuries of cultivation.",
-    image: "https://images.unsplash.com/photo-1530364914243-7e28daa9d5ff?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80",
+    image: "https://www.clearspring.co.uk/cdn/shop/articles/Ancient-Grains-01_d7c6771e-d6d5-4060-86b3-c55fa81618f1-170078_1000x.jpg?v=1674047351",
     category: "Grains",
   },
   {
     id: 4,
     title: "Culinary Herbs",
     description: "Aromatic herbs that elevate the flavor profile of any dish while providing health benefits.",
-    image: "https://images.unsplash.com/photo-1524201865268-285dc0ce0532?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80",
+    image: "https://cdn11.bigcommerce.com/s-a9b4a/images/stencil/1280x1280/products/374/7320/Culinary-Herb-Garden__97598.1668007581.jpg?c=2",
     category: "Herbs",
   },
 ];
@@ -60,7 +60,7 @@ export function ProductSection() {
             />
           ))}
         </div>
-        
+{/*         
         <div className="mt-16 text-center">
           <a 
             href="#" 
@@ -68,7 +68,7 @@ export function ProductSection() {
           >
             View All Products
           </a>
-        </div>
+        </div> */}
       </Container>
     </section>
   );
