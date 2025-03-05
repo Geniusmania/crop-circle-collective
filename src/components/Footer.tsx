@@ -1,4 +1,3 @@
-
 import { Container } from "./ui/Container";
 
 export function Footer() {
@@ -24,16 +23,16 @@ export function Footer() {
             <h4 className="font-medium text-lg mb-4">Quick Links</h4>
             <ul className="space-y-2 text-white/70">
               <li>
-                <a href="#" className="hover:text-white transition-colors">Home</a>
+                <a href="#/" className="hover:text-white transition-colors">Home</a>
               </li>
               <li>
-                <a href="#products" className="hover:text-white transition-colors">Products</a>
+                <a href="#/products" className="hover:text-white transition-colors">Products</a>
               </li>
               <li>
-                <a href="#about" className="hover:text-white transition-colors">About Us</a>
+                <a href="#/about" className="hover:text-white transition-colors">About Us</a>
               </li>
               <li>
-                <a href="#contact" className="hover:text-white transition-colors">Contact</a>
+                <a href="#/contact" className="hover:text-white transition-colors">Contact</a>
               </li>
             </ul>
           </div>
@@ -42,16 +41,16 @@ export function Footer() {
             <h4 className="font-medium text-lg mb-4">Products</h4>
             <ul className="space-y-2 text-white/70">
               <li>
-                <a href="#" className="hover:text-white transition-colors">Vegetables</a>
+                <a href="#/products" className="hover:text-white transition-colors">Vegetables</a>
               </li>
               <li>
-                <a href="#" className="hover:text-white transition-colors">Fruits</a>
+                <a href="#/products" className="hover:text-white transition-colors">Fruits</a>
               </li>
               <li>
-                <a href="#" className="hover:text-white transition-colors">Grains</a>
+                <a href="#/products" className="hover:text-white transition-colors">Grains</a>
               </li>
               <li>
-                <a href="#" className="hover:text-white transition-colors">Herbs</a>
+                <a href="#/products" className="hover:text-white transition-colors">Herbs</a>
               </li>
             </ul>
           </div>
@@ -84,10 +83,10 @@ export function Footer() {
             © {currentYear} QuickLinks Agribusiness. All rights reserved.
           </p>
           <div className="flex gap-6 mt-4 md:mt-0">
-            <a href="#" className="text-white/50 hover:text-white transition-colors">
+            <a href="#/" className="text-white/50 hover:text-white transition-colors">
               Privacy Policy
             </a>
-            <a href="#" className="text-white/50 hover:text-white transition-colors">
+            <a href="#/" className="text-white/50 hover:text-white transition-colors">
               Terms of Service
             </a>
           </div>

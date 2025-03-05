@@ -4,10 +4,10 @@ import { Menu, X } from "lucide-react";
 import { Container } from "./ui/Container";
 
 const navigation = [
-  { name: "Home", href: "#" },
-  { name: "Products", href: "#products" },
-  { name: "About", href: "#about" },
-  { name: "Contact", href: "#contact" },
+  { name: "Home", href: "#/" },
+  { name: "Products", href: "#/products" },
+  { name: "About", href: "#/about" },
+  { name: "Contact", href: "#/contact" },
 ];
 
 export function Header() {
@@ -34,7 +34,7 @@ export function Header() {
       <Container>
         <div className="flex items-center justify-between py-4 md:py-6">
           <div className="flex items-center">
-            <a href="#" className="flex items-center gap-2">
+            <a href="#/" className="flex items-center gap-2">
               <span className="h-8 w-8 rounded-full bg-primary flex items-center justify-center">
                 <span className="text-primary-foreground font-serif font-bold text-lg">Q</span>
               </span>
@@ -72,7 +72,7 @@ export function Header() {
         <div className="fixed inset-0 z-50 bg-background">
           <Container>
             <div className="flex items-center justify-between py-4">
-              <a href="#" className="flex items-center gap-2">
+              <a href="#/" className="flex items-center gap-2">
                 <span className="h-8 w-8 rounded-full bg-primary flex items-center justify-center">
                   <span className="text-primary-foreground font-serif font-bold text-lg">Q</span>
                 </span>

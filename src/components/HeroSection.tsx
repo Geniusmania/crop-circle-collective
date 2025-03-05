@@ -1,3 +1,4 @@
+
 import { Container } from "./ui/Container";
 import { Badge } from "./ui/badge";
 
@@ -17,13 +18,13 @@ export function HeroSection() {
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center animate-fade-in-slower">
             <a 
-              href="#products" 
+              href="#/products" 
               className="bg-primary hover:bg-primary/90 text-primary-foreground px-6 py-3 rounded-full font-medium transition-colors"
             >
               Browse Products
             </a>
             <a 
-              href="#about" 
+              href="#/about" 
               className="bg-muted hover:bg-muted/80 text-foreground px-6 py-3 rounded-full font-medium transition-colors"
             >
               Learn More
